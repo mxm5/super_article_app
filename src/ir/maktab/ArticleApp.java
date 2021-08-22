@@ -1,6 +1,13 @@
 package ir.maktab;
 
-public class ArticleApp {
+
+import ir.maktab.utils.DButils;
+import ir.maktab.utils.LoggerApis;
+import ir.maktab.views.WelcomePage;
+
+import java.sql.Connection;
+
+public class ArticleApp implements LoggerApis {
     // برنامه ا ی طراحی کنید که شامل موجودیت های زیر باشد.:
 
     // User(id, username, nationalCode, birthday, password)
@@ -14,11 +21,17 @@ public class ArticleApp {
 
     // Tag( id, title)
 
+    //================    STEP 1 DONE   ================\\
+
     // برنامه با نمایش منو برای کاربر آغاز میشود
     // و امکان ورود،
     // ثبت نام
     // یا دیدن مقاالت
     // را به وی میدهد .
+
+    //================    STEP 2    ================\\
+
+
     //اگر کاربر دیدن همه مقاالت را انتخاب کند،
     // لیست ی از عنوان و خالصه همه مقاالت
     // منتشر شده به
@@ -56,5 +69,11 @@ public class ArticleApp {
     // و از مفاهیم OOP در این تمرین استفاده کنید.
     //
 
+
+    public static void main(String[] args) {
+
+        new WelcomePage();
+
+    }
 
 }

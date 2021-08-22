@@ -1,6 +1,8 @@
 package ir.maktab.models;
 
-public class Tag {
+import ir.maktab.base.models.BaseModel;
+
+public class Tag extends BaseModel<Long> {
     Long id;
     String  title;
 

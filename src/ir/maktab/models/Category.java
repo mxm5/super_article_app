@@ -1,6 +1,8 @@
 package ir.maktab.models;
 
-public class Category {
+import ir.maktab.base.models.BaseModel;
+
+public class Category extends BaseModel<Long> {
     Long id;
     String title;
     String description;

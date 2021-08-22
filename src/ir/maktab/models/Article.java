@@ -1,8 +1,10 @@
 package ir.maktab.models;
 
+import ir.maktab.base.models.BaseModel;
+
 import java.sql.Timestamp;
 
-public class Article {
+public class Article  extends BaseModel<Long> {
     Long id;
     String title;
     String brief;
@@ -10,7 +12,7 @@ public class Article {
     Timestamp createDate;
     boolean isPublished;
     Timestamp lastUpdateDate;
-    Timestamp publishDate;
+    Timestamp initialPublishDate;
 
     Article() {
     }
@@ -30,7 +32,7 @@ public class Article {
         this.createDate = createDate;
         this.isPublished = isPublished;
         this.lastUpdateDate = lastUpdateDate;
-        this.publishDate = publishDate;
+        this.initialPublishDate = publishDate;
     }
 
     public Long getId() {
@@ -89,12 +91,12 @@ public class Article {
         this.lastUpdateDate = lastUpdateDate;
     }
 
-    public Timestamp getPublishDate() {
-        return publishDate;
+    public Timestamp getInitialPublishDate() {
+        return initialPublishDate;
     }
 
-    public void setPublishDate(Timestamp publishDate) {
-        this.publishDate = publishDate;
+    public void setInitialPublishDate(Timestamp initialPublishDate) {
+        this.initialPublishDate = initialPublishDate;
     }
 
     @Override
@@ -107,7 +109,7 @@ public class Article {
                 ", createDate=" + createDate +
                 ", isPublished=" + isPublished +
                 ", lastUpdateDate=" + lastUpdateDate +
-                ", publishDate=" + publishDate +
+                ", initialPublishDate=" + initialPublishDate +
                 '}';
     }
 }

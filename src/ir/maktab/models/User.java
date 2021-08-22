@@ -1,10 +1,14 @@
 package ir.maktab.models;
 
+import ir.maktab.base.models.BaseModel;
+
 import javax.print.attribute.DateTimeSyntax;
 
-public class User {
+public class User extends BaseModel<Long> {
     Long id;
-    String username;
+    String userHandle;
+    String userFirstName;
+    String userLastName;
     Long nationalCode;
     DateTimeSyntax birthday;
     String password;
@@ -13,20 +17,44 @@ public class User {
     }
 
     public User(String username, String password) {
-        this.username = username;
+        this.userHandle = username;
         this.password = password;
     }
 
-    public User(Long id, String username, Long nationalCode, DateTimeSyntax birthday, String password) {
+    public User(Long id,
+                String userHandle,
+                String userFirstName,
+                String userLastName,
+                Long nationalCode,
+            DateTimeSyntax birthday,
+                String password)
+    {
         this.id = id;
-        this.username = username;
+        this.userHandle = userHandle;
+        this.userFirstName = userFirstName;
+        this.userLastName = userLastName;
         this.nationalCode = nationalCode;
         this.birthday = birthday;
         this.password = password;
     }
 
-    public Long getId() {
+    public String getUserFirstName() {
+        return userFirstName;
+    }
 
+    public void setUserFirstName(String userFirstName) {
+        this.userFirstName = userFirstName;
+    }
+
+    public String getUserLastName() {
+        return userLastName;
+    }
+
+    public void setUserLastName(String userLastName) {
+        this.userLastName = userLastName;
+    }
+
+    public Long getId() {
         return id;
     }
 
@@ -34,12 +62,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserHandle() {
+        return userHandle;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserHandle(String userHandle) {
+        this.userHandle = userHandle;
     }
 
     public Long getNationalCode() {
@@ -70,7 +98,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", username='" + username + '\'' +
+                ", username='" + userHandle + '\'' +
                 ", nationalCode=" + nationalCode +
                 ", birthday=" + birthday +
                 ", password='" + password + '\'' +
