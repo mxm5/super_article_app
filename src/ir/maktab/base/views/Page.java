@@ -1,5 +1,8 @@
 package ir.maktab.base.views;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.Scanner;
 
@@ -86,9 +89,9 @@ public class Page implements PageApi {
 
     @Override
     public int selectOption(int maxOpt) {
-        br();
+//        br();
         int opt;
-        br("enter an option between 1 to " + maxOpt);
+        System.out.println("enter an option between 1 to " + maxOpt);
         while (true) {
             try {
                 opt = new Scanner(System.in).nextInt();
@@ -159,12 +162,75 @@ public class Page implements PageApi {
     public String enterPassword() {
         String password;
         while (true) {
-             password = enterLine("enter your password ");
+            password = enterLine("enter your password ");
             String passwordConfirm = enterLine("confirm your password");
             if (passwordConfirm.equals(password)) break;
         }
         return password;
     }
 
+    @Override
+    public int selectOption(int minOpt, int maxOpt) {
+        br();
+        int opt;
+        br("enter an option between " + minOpt + " to " + maxOpt);
+        while (true) {
+            try {
+                opt = new Scanner(System.in).nextInt();
+                if (opt > maxOpt)
+                    warning("enter an option between " + minOpt + " to " + maxOpt);
+                else if (opt < minOpt)
+                    warning("enter an option between " + minOpt + " to " + maxOpt);
+                else break;
+            } catch (Exception e) {
 
+                warning("insert correct value");
+            }
+        }
+        success("selected " + opt);
+        return opt;
+    }
+
+
+    @Override
+    public String selectDate() {
+        String date = "%d-%d-%d";
+        System.out.println("select a year ");
+        int year = selectOption(2021 - 145, 2021 - 7);
+        System.out.println("select a month");
+        int month = selectOption(12);
+        System.out.println("select a day");
+        int day = selectOption(31);
+        return String.format(date, year, month, day);
+    }
+
+    @Override
+    public Timestamp parseDateFromInput(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate parsedDate = LocalDate.parse(date, formatter);
+        return Timestamp.valueOf(parsedDate.atStartOfDay());
+    }
+
+    @Override
+    public String enterValue(String msg, int minimumLength, int maximumLength) {
+        String val;
+        System.out.print(msg + " > ");
+        while (true) {
+            val = new Scanner(System.in).next();
+            if (val.length() < minimumLength)
+                warning("entered value must have between "
+                        + minimumLength + " characters and "
+                        + maximumLength + " characters");
+
+
+            else if (val.length() > maximumLength)
+                warning("entered value must have between "
+                        + minimumLength + " characters and "
+                        + maximumLength + " characters");
+            else
+                break;
+        }
+
+        return val;
+    }
 }

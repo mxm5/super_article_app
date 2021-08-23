@@ -4,6 +4,7 @@ import ir.maktab.base.models.BaseModel;
 
 import java.sql.Timestamp;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class User extends BaseModel<Long> {
     Long id;
@@ -15,6 +16,15 @@ public class User extends BaseModel<Long> {
     String password;
 
     public User() {
+    }
+
+    public User(String userHandle, String userFirstName, String userLastName, String nationalCode, Timestamp birthday, String password) {
+        this.userHandle = userHandle;
+        this.userFirstName = userFirstName;
+        this.userLastName = userLastName;
+        this.nationalCode = nationalCode;
+        this.birthday = birthday;
+        this.password = password;
     }
 
     public User(String username, String password) {
@@ -92,6 +102,12 @@ public class User extends BaseModel<Long> {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getFormattedBirthDay() {
+        String pattern = "yyyy-MM-dd";
+        SimpleDateFormat formatter = new SimpleDateFormat(pattern);
+        return formatter.format(birthday);
     }
 
 

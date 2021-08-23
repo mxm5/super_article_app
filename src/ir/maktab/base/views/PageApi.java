@@ -1,5 +1,6 @@
 package ir.maktab.base.views;
 
+import java.sql.Timestamp;
 import java.util.Collection;
 
 public interface PageApi {
@@ -15,6 +16,8 @@ public interface PageApi {
     void jump();
 
     String enterValue(String msg, int minimumLength);
+
+    String enterValue(String msg, int minimumLength,int maximumLength);
 
     String enterLine(String msg );
 
@@ -35,6 +38,10 @@ public interface PageApi {
     void success();
 
     String enterPassword();
-//    int printOptions(Collection<String> options);
 
+    int selectOption(int minOpt, int maxOpt);
+
+    String selectDate();
+
+    Timestamp parseDateFromInput(String date);
 }

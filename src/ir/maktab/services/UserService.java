@@ -14,4 +14,8 @@ public class UserService {
     public User login(User login) {
         return userRepo.findValidUser(login);
     }
+
+    public boolean registerNewUser(User register){
+        return userRepo.createUser(register);
+    }
 }

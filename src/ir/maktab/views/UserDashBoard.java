@@ -11,9 +11,15 @@ public class UserDashBoard extends Page {
 
         this.currentUser = currentUser;
 
-        // show user articles
+        // show your own articles
 
-        // edit articles
+        // edit your own articles
+
+        // change your profile info
+
+        // publish articles
+
+        // un publish articles
 
     }
 }
