@@ -4,7 +4,7 @@ import ir.maktab.base.models.BaseModel;
 
 public class Tag extends BaseModel<Long> {
     Long id;
-    String  title;
+    String title;
 
     public Tag() {
     }
@@ -31,9 +31,6 @@ public class Tag extends BaseModel<Long> {
 
     @Override
     public String toString() {
-        return "Tag{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                '}';
+        return "Tag{" + "id=" + id + ", title='" + title + '\'' + '}';
     }
 }

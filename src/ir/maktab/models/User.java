@@ -2,15 +2,16 @@ package ir.maktab.models;
 
 import ir.maktab.base.models.BaseModel;
 
-import javax.print.attribute.DateTimeSyntax;
+import java.sql.Timestamp;
+import java.sql.Timestamp;
 
 public class User extends BaseModel<Long> {
     Long id;
     String userHandle;
     String userFirstName;
     String userLastName;
-    Long nationalCode;
-    DateTimeSyntax birthday;
+    String nationalCode;
+    Timestamp birthday;
     String password;
 
     public User() {
@@ -25,10 +26,9 @@ public class User extends BaseModel<Long> {
                 String userHandle,
                 String userFirstName,
                 String userLastName,
-                Long nationalCode,
-            DateTimeSyntax birthday,
-                String password)
-    {
+                String nationalCode,
+                Timestamp birthday,
+                String password) {
         this.id = id;
         this.userHandle = userHandle;
         this.userFirstName = userFirstName;
@@ -70,19 +70,19 @@ public class User extends BaseModel<Long> {
         this.userHandle = userHandle;
     }
 
-    public Long getNationalCode() {
+    public String getNationalCode() {
         return nationalCode;
     }
 
-    public void setNationalCode(Long nationalCode) {
+    public void setNationalCode(String nationalCode) {
         this.nationalCode = nationalCode;
     }
 
-    public DateTimeSyntax getBirthday() {
+    public Timestamp getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(DateTimeSyntax birthday) {
+    public void setBirthday(Timestamp birthday) {
         this.birthday = birthday;
     }
 
@@ -94,11 +94,14 @@ public class User extends BaseModel<Long> {
         this.password = password;
     }
 
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", username='" + userHandle + '\'' +
+                ", userHandle='" + userHandle + '\'' +
+                ", userFirstName='" + userFirstName + '\'' +
+                ", userLastName='" + userLastName + '\'' +
                 ", nationalCode=" + nationalCode +
                 ", birthday=" + birthday +
                 ", password='" + password + '\'' +

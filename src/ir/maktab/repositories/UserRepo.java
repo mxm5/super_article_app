@@ -3,15 +3,14 @@ package ir.maktab.repositories;
 import ir.maktab.base.repositories.Repo;
 import ir.maktab.models.User;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+
 
 public class UserRepo extends Repo<User, Long> {
     @Override
     public void createTableIfNotExists() {
-       String  createTableSql = "CREATE TABLE IF NOT EXISTS `articles_app`.`user_table` (\n" +
+        String createTableSql = "CREATE TABLE IF NOT EXISTS `articles_app`.`user_table` (\n" +
                 "  `user_id` INT NOT NULL,\n" +
                 "  `user_handle` VARCHAR(45) NOT NULL,\n" +
                 "  `user_first_name` VARCHAR(45) NOT NULL,\n" +
@@ -28,24 +27,30 @@ public class UserRepo extends Repo<User, Long> {
         }
     }
 
-    User findValidUser(User user){
+    public User findValidUser(User user) {
 
         try {
-            // TODO : insert query
-            String sqlQuery =String.format("    %s %s " ,
-                    user.getUserHandle(),user.getPassword());
-            ResultSet queryResult = connection.createStatement().executeQuery(sqlQuery);
-            if (queryResult.next()){
-                User foundUser = new User();
-                //TODO: insert column names
-                user.setId(queryResult.getLong("user_id"));
-                user.setUserHandle(queryResult.getString("user_handle"));
-//                user.setBirthday();
-                user.setUserFirstName(queryResult.getString("user_first_name"));
-                user.setUserLastName(queryResult.getString("user_last_name"));
-//                user.setPassword();
-//                user.setNationalCode();
-                return foundUser;
+
+            String sqlQuery = String.format("SELECT * FROM articles_app.user_table where \n" +
+                            "user_handle = '%s' and user_password = '%s' ;",
+                    user.getUserHandle(), user.getPassword());
+            ResultSet r = connection.createStatement().executeQuery(sqlQuery);
+            if (r.next()) {
+                //                user.setId(queryResult.getLong(1));
+//                user.setUserHandle(queryResult.getString("user_handle"));
+//                user.setBirthday(queryResult.getTimestamp("user_birthday"));
+//                user.setUserFirstName(queryResult.getString("user_first_name"));
+//                user.setUserLastName(queryResult.getString("user_last_name"));
+//                user.setPassword(queryResult.getString("user_password"));
+//                user.setNationalCode(Long.parseLong(queryResult.getString("user_national_code")));
+                return new User(
+                        r.getLong("user_id"), r.getString("user_handle"),
+                        r.getString("user_first_name"), r.getString("user_last_name")
+                        , r.getString("user_national_code"),
+                        r.getTimestamp("user_birthday"), ""
+
+
+                );
             }
 
 
