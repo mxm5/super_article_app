@@ -10,6 +10,9 @@ public class WelcomePage extends Page {
             case 1 -> new LoginPage();
             case 2 -> new RegisterPage();
             case 3 -> new ShowAllArticlesPage();
+            case 4 -> {
+                success("EXITING ...");
+            }
         }
 
     }

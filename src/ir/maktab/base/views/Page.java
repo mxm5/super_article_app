@@ -139,12 +139,12 @@ public class Page implements PageApi {
 
     @Override
     public <K> void warning(K warningMessage) {
-        System.out.println("[ Err ]: " + warningMessage);
+        System.err.println("[ Err ]: " + warningMessage);
     }
 
     @Override
     public void warning() {
-        System.out.println(" [ Err ] ");
+        System.err.println(" [ Err ]: failed ");
 
     }
 

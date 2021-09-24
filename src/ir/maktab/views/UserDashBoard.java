@@ -7,6 +7,9 @@ public class UserDashBoard extends Page {
 
     final User currentUser;
 
+
+
+
     public UserDashBoard(User currentUser) {
 
         this.currentUser = currentUser;
@@ -17,9 +20,7 @@ public class UserDashBoard extends Page {
 
         // change your profile info
 
-        // publish articles
-
-        // un publish articles
+        // publish un publish articles
 
     }
 }

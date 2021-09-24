@@ -1,4 +1,10 @@
 package ir.maktab.views;
 
-public class ShowAllArticlesPage {
+import ir.maktab.base.views.Page;
+import ir.maktab.services.ArticleService;
+
+public class ShowAllArticlesPage extends Page {
+    public ShowAllArticlesPage() {
+        new ArticleService();
+    }
 }
